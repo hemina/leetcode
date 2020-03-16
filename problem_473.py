@@ -86,29 +86,29 @@ class Solution(object):
         if nums[0] > side:
             return False
 
-        def dfs(nums, val, i, side, visited, n):
-            if val == side:
-                return True, visited
-            for k in range(i + 1, n):
-                if not visited[k] and nums[k] + val <= side:
-                    visited[k] = True
-                    flag, visited = dfs(nums, nums[k] + val, i, side, visited, n)
-                    if flag:
-                        return flag, visited
-                    visited[k] = False
-            return False, visited
-
         for i, num in enumerate(nums):
             if not visited[i]:
                 visited[i] = True
-                flag, visited = dfs(nums, num, i, side, visited, n)
+                flag, visited = self.dfs(nums, num, i, side, visited, n)
                 if not flag:
                     return False
-        return flag
+        return True
+
+    def dfs(self, nums, val, i, side, visited, n):
+        if val == side:
+            return True, visited
+        for k in range(i + 1, n):
+            if not visited[k] and nums[k] + val <= side:
+                visited[k] = True
+                flag, visited = self.dfs(nums, nums[k] + val, i, side, visited, n)
+                if flag:
+                    return flag, visited
+                visited[k] = False
+        return False, visited
 
 
 """
-Runtime: 36 ms, faster than 89.29% of Python online submissions.
+Runtime: 28 ms, faster than 90.48% of Python online submissions.
 Memory Usage: 11.8 MB, less than 100.00% of Python online submissions.
 Complexity: O(n^2)
 """
