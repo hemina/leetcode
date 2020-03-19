@@ -36,7 +36,7 @@ class Solution(object):
             return 1
         min_ind = 1
         max_ind = n
-        while (max_ind - min_ind > 1):
+        while max_ind - min_ind > 1:
             ind = (max_ind - min_ind)/2+min_ind
             ans = isBadVersion(ind)
             if ans:
