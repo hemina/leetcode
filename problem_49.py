@@ -34,7 +34,7 @@ class Solution:
 
 
 """
-Runtime: 96 ms, faster than 87.51% of Python online submissions.
+Runtime: 92 ms, faster than 95.71% of Python online submissions.
 Memory Usage: 17 MB, less than 37.74% of Python online submissions.
 Complexity: O(n)
 """

@@ -36,23 +36,16 @@ class Solution:
             if secret[i] == guess[i]:
                 a += 1
             else:
-                if guess[i] in dict_guess:
-                    dict_guess[guess[i]] += 1
-                else:
-                    dict_guess[guess[i]] = 1
-                if secret[i] in dict_secret:
-                    dict_secret[secret[i]] += 1
-                else:
-                    dict_secret[secret[i]] = 1
+                dict_guess[guess[i]] = dict_guess.get(guess[i], 0) + 1
+                dict_secret[secret[i]] = dict_secret.get(secret[i], 0) + 1
 
         for k in dict_guess:
             if k in dict_secret:
                 b += min(dict_guess[k], dict_secret[k])
         return "{}A{}B".format(a, b)
 
-
 """
-Runtime: 64 ms, faster than 13.49% of Python online submissions.
+Runtime: 32 ms, faster than 93.45% of Python online submissions.
 Memory Usage: 13.8 MB, less than 25.00% of Python online submissions.
 Complexity: O(n)
 """
