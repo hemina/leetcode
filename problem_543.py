@@ -28,19 +28,19 @@ https://leetcode.com/problems/diameter-of-binary-tree/
 #         self.right = None
 
 class Solution:
-    def path_length(self, root: TreeNode, length: int):
+    def path_length(self, root: TreeNode):
         if root:
-            left_path = self.path_length(root.left, 0)
-            right_path = self.path_length(root.right, 0)
+            left_path = self.path_length(root.left)
+            right_path = self.path_length(root.right)
             path = left_path + right_path
             if path > self.diameter:
                 self.diameter = path
-            return max(left_path, right_path) + length + 1
-        return length
+            return max(left_path, right_path) + 1
+        return 0
 
     def diameterOfBinaryTree(self, root: TreeNode) -> int:
         self.diameter = 0
-        self.path_length(root, 0)
+        self.path_length(root)
         return self.diameter
 
 
