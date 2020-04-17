@@ -27,9 +27,14 @@ https://leetcode.com/problems/valid-parenthesis-string/
 
 class Solution:
     def checkValidString(self, s: str) -> bool:
+        # Simplify s to reduce complexity in further loop
         while s != s.replace("()", ""):
             s = s.replace("()", "")
 
+        """
+        The first loop, from left to right, is to check if there are supplementary ")" before "(".
+        For example, a string like ")(*" won't be able to pass the first loop.
+        """
         queue = []
         for i in range(len(s)):
             if s[i] in ["(", "*"]:
@@ -40,6 +45,10 @@ class Solution:
                 else:
                     return False
 
+        """
+        The second loop, from right to left, is to check if there are supplementary "(" after ")".
+        For example, a string like "*)(" won't be able to pass the second loop.
+        """
         queue = []
         for i in range(len(s) - 1, -1, -1):
             if s[i] in [")", "*"]:
@@ -49,6 +58,7 @@ class Solution:
                     queue.pop()
                 else:
                     return False
+
         return True
 
 
