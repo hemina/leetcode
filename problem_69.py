@@ -33,7 +33,7 @@ class Solution(object):
 
         min_val = 0
         max_val = x
-        new_x = x / 2
+        new_x = x // 2
 
         while new_x != min_val:
             if x < new_x ** 2:
@@ -42,7 +42,7 @@ class Solution(object):
                 min_val = new_x
             else:
                 return new_x
-            new_x = (min_val + max_val) / 2
+            new_x = (min_val + max_val) // 2
         return new_x
 
 
