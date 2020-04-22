@@ -83,7 +83,7 @@ class Solution:
             return -1
 
         ind = -1
-        first = 0
+        first = 1
         last = nb_col
         col = nb_col // 2
         while col < last:
@@ -92,16 +92,15 @@ class Solution:
                 if binaryMatrix.get(row, col) == 1:
                     counter += 1
                     ind = last = col
-                    col = max(col // 2, first)
                     break  # we find at least one "1" in the "last" column
             if counter == 0:  # we can't find any "1" in this column
-                first = max(first, col + 1)
-                col = (last - first) // 2 + first
+                first = col + 1
+            col = (last - first) // 2 + first
         return ind
 
 
 """
-Runtime: 112 ms
+Runtime: 104 ms
 Memory Usage: 14 MB
 Complexity: O(nlogm)
 """
