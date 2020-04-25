@@ -60,7 +60,7 @@ class LRUCache:
 
 
 """
-Runtime: 180 ms, faster than 89.88% of Python online submissions.
+Runtime: 172 ms, faster than 98.25% of Python online submissions.
 Memory Usage: 22.9 MB, less than 6.06% of Python online submissions.
 Complexity: O(1)
 """
