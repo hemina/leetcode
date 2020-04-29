@@ -57,12 +57,6 @@ class Solution:
         count_matrix = [[0 for i in range(len1)] for j in range(len2)]
 
         for i in range(1, len1):
-            count_matrix[0][i] = 1 if text1[i] == text2[0] else 0
-
-        for j in range(1, len2):
-            count_matrix[j][0] = 1 if text1[0] == text2[j] else 0
-
-        for i in range(1, len1):
             for j in range(1, len2):
                 count_matrix[j][i] = max(count_matrix[j][i - 1], count_matrix[j - 1][i])
                 if text1[i] == text2[j]:
