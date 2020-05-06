@@ -18,24 +18,19 @@ https://leetcode.com/problems/majority-element/
 """
 
 
-class Solution(object):
-    def majorityElement(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        counter_dict = dict()
-
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        min_count = len(nums)//2
+        visited = set()
         for num in nums:
-            if num not in counter_dict:
-                counter_dict[num] = 0
-            counter_dict[num] += 1
-            if counter_dict[num] > len(nums) / 2:
-                return num
+            if num not in visited:
+                visited.add(num)
+                if nums.count(num) > min_count:
+                    return num
 
 
 """
-Runtime: 156 ms, faster than 57.85% of Python online submissions.
-Memory Usage: 13.3 MB, less than 92.68% of Python online submissions.
-Complexity: O(n)
+Runtime: 160 ms, faster than 98.42% of Python online submissions.
+Memory Usage: 15 MB, less than 7.14% of Python online submissions.
+Complexity: O(n^2)
 """
