@@ -75,3 +75,35 @@ Runtime: 24 ms, faster than 96.34% of Python online submissions.
 Memory Usage: 13.9 MB, less than 6.12% of Python online submissions.
 Complexity: O(n)
 """
+
+######################################
+
+
+class Solution:
+    def build_dict(self, node, depth, parent):
+        if not node:
+            return
+
+        value = node.val
+        self.depth_dict[value] = depth
+
+        if parent:
+            self.parent_dict[value] = parent
+
+        self.build_dict(node.left, depth + 1, value)
+        self.build_dict(node.right, depth + 1, value)
+
+    def isCousins(self, root: TreeNode, x: int, y: int) -> bool:
+        self.depth_dict = dict()
+        self.parent_dict = dict()
+        self.build_dict(root, 0, None)
+        if self.depth_dict.get(x) == self.depth_dict.get(y) and self.parent_dict.get(x) != self.parent_dict.get(y):
+            return True
+        return False
+
+
+"""
+Runtime: 28 ms, faster than 88.05% of Python online submissions.
+Memory Usage: 13.8 MB, less than 6.12% of Python online submissions.
+Complexity: O(n)
+"""
