@@ -42,7 +42,10 @@ class Solution:
         y1 = coordinates[1][1]
 
         if x0 == x1:
-            return False
+            for [x, y] in coordinates[2:]:
+                if x != x0:
+                    return False
+            return True
         slope = (y1 - y0) / (x1 - x0)
 
         for [x, y] in coordinates[2:]:
