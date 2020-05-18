@@ -52,7 +52,7 @@ class Solution:
 
         if S == P:
             ans.append(0)
-            
+
         for i in range(len_p, len_s):
             S += hash(s[i]) - hash(s[i - len_p])
             if S == P:
