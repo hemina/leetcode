@@ -97,3 +97,32 @@ Runtime: 32 ms, faster than 86.34% of Python online submissions.
 Memory Usage: 13.7 MB, less than 6.67% of Python online submissions.
 Complexity: O(nlogn)
 """
+
+
+class Solution:
+    def bstFromPreorder(self, preorder: List[int]) -> TreeNode:
+
+        def helper(value, node):
+            if value < node.val:
+                if not node.left:
+                    node.left = TreeNode(value)
+                else:
+                    helper(value, node.left)
+            else:
+                if not node.right:
+                    node.right = TreeNode(value)
+                else:
+                    helper(value, node.right)
+            return node
+
+        root = TreeNode(preorder[0])
+        for value in preorder[1:]:
+            root = helper(value, root)
+        return root
+
+
+"""
+Runtime: 28 ms, faster than 96.84% of Python online submissions.
+Memory Usage: 13.9 MB, less than 6.67% of Python online submissions.
+Complexity: O(nlogn)
+"""
